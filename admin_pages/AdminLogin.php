@@ -21,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($result->num_rows == 1) {
                     $row = $result->fetch_assoc();
 
-                    // للتحقق من كلمة المرور
                     if ($password === $row['password']) {
                         $_SESSION["loggedin"]       = true;
                         
@@ -38,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->close();
             }
         } catch (mysqli_sql_exception $e) {
-            // This stops the white screen crash and shows the error in the red box
             $error = "حدث خطأ في قاعدة البيانات: " . $e->getMessage(); 
         }
         
