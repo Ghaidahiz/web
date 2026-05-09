@@ -10,8 +10,8 @@ function filterRegions() {
         
         const regionName = card.querySelector('h2').textContent.toLowerCase();
         const tags = card.querySelectorAll('.gallery-tag');
-        const cardLocation = tags[0].textContent; // أول تاغ هو الموقع
-        const cardNature = tags[1].textContent;   // ثاني تاغ هو الطبيعة
+        const cardLocation = tags[0].textContent; 
+        const cardNature = tags[1].textContent;  
 
         const matchesSearch = regionName.includes(searchValue);
         const matchesLocation = locationValue === "" || cardLocation.includes(locationValue);

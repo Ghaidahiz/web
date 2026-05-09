@@ -1,10 +1,6 @@
-// script.js  |  Explore KSA – Admin Pages
 
-// ==========================================
-// 2. ADD INPUT (addContent.php)
-// ==========================================
 function addInput(btn) {
-    const parent = btn.parentNode.parentNode; // the admin-form-group
+    const parent = btn.parentNode.parentNode;
     const newRow = document.createElement('div');
     newRow.className = 'dynamic-input-row';
 
@@ -21,12 +17,10 @@ function addInput(btn) {
     newRow.appendChild(removeBtn);
     parent.appendChild(newRow);
 }
-// ==========================================
-// 3. LOGIN FORM (AdminLogin.php only)
-// ==========================================
+
 function initLoginForm() {
     const form = document.getElementById('loginForm');
-    if (!form) return; // not on the login page, stop here
+    if (!form) return; 
 
     const usernameIn  = document.getElementById('username');
     const passwordIn  = document.getElementById('password');
@@ -35,7 +29,7 @@ function initLoginForm() {
     const toggleBtn   = document.getElementById('togglePass');
     const submitBtn   = document.getElementById('submitBtn');
 
-    /* Show / hide password */
+  
     if(toggleBtn) {
         toggleBtn.addEventListener('click', function () {
             const isHidden        = passwordIn.type === 'password';
@@ -44,11 +38,11 @@ function initLoginForm() {
         });
     }
 
-    /* Clear errors while typing */
+   
     usernameIn.addEventListener('input', function () { clearErr(usernameIn, usernameErr); });
     passwordIn.addEventListener('input', function () { clearErr(passwordIn, passwordErr); });
 
-    /* Client-side validation before PHP runs */
+   
     form.addEventListener('submit', function (e) {
         let valid = true;
 
@@ -64,13 +58,12 @@ function initLoginForm() {
 
         if (!valid) { e.preventDefault(); return; }
 
-        // Loading state while PHP checks the DB
+        
         submitBtn.textContent = 'جارٍ التحقق...';
         submitBtn.disabled    = true;
     });
 }
 
-// HELPERS FOR LOGIN
 function showErr(input, span, msg) {
     input.classList.add('invalid');
     span.textContent = msg;
@@ -81,15 +74,12 @@ function clearErr(input, span) {
     span.textContent = '';
 }
 
-// ==========================================
-// 4. ALERTS (Auto-hide success/error messages)
-// ==========================================
 function initAlerts() {
     const alertMsg = document.getElementById('alert-msg');
     
     if (alertMsg) {
         setTimeout(function() {
-            // تأثير الاختفاء
+           
             alertMsg.style.transition = "opacity 1s ease";
             alertMsg.style.opacity = "0";
             
@@ -100,9 +90,6 @@ function initAlerts() {
     }
 }
 
-// ==========================================
-// INIT – Runs everything safely when the DOM loads
-// ==========================================
 document.addEventListener('DOMContentLoaded', function() {
     initNightMode();
     initLoginForm();

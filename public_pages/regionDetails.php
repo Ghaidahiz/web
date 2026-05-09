@@ -2,7 +2,7 @@
 session_start();
 include("../database_connection.php");
 
-// 1. التأكد من وجود معرف المنطقة في الرابط لضمان عدم حدوث خطأ
+
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header("Location: regionsGallary.php");
     exit();
@@ -10,7 +10,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $region_id = (int)$_GET['id'];
 
-// 2. جلب معلومات المنطقة الأساسية (الاسم، العنوان، الوصف، الصورة)
+
 $region_query = "SELECT * FROM Regions WHERE region_id = $region_id";
 $region_result = mysqli_query($conn, $region_query);
 $region_data = mysqli_fetch_assoc($region_result);
@@ -19,15 +19,13 @@ if (!$region_data) {
     die("عذراً، هذه المنطقة غير موجودة في قاعدة البيانات.");
 }
 
-// 3. جلب المعالم السياحية المرتبطة بهذه المنطقة
+
 $landmarks_query = "SELECT landmark FROM Landmarks WHERE region_id = $region_id";
 $landmarks_res = mysqli_query($conn, $landmarks_query);
 
-// 4. جلب الأنشطة المرتبطة بهذه المنطقة
 $activities_query = "SELECT activity FROM Activities WHERE region_id = $region_id";
 $activities_res = mysqli_query($conn, $activities_query);
 
-// 5. جلب كافة الصور الإضافية من جدول الصور
 $images_query = "SELECT image_path FROM Images WHERE region_id = $region_id";
 $images_res = mysqli_query($conn, $images_query);
 ?>
