@@ -10,10 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($username) && !empty($password)) {
         
-        // 1. FIXED: Removed 'id' and changed table name to 'Admins'
         $sql = "SELECT username, password FROM Admins WHERE username = ?";
 
-        // 2. FIXED: Added try...catch block to handle errors gracefully
         try {
             if ($stmt = $conn->prepare($sql)) {
                 $stmt->bind_param("s", $username);
@@ -27,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if ($password === $row['password']) {
                         $_SESSION["loggedin"]       = true;
                         
-                        // 3. FIXED: Removed $_SESSION["admin_id"] because the table has no ID column
                         $_SESSION["admin_username"] = $row['username'];
 
                         header("location: dashboard.php");
@@ -60,7 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
-    <!-- ===== Navbar ===== -->
     <nav class="navbar">
         <span class="nav-brand">لوحة المشرف</span>
         <div class="nav-links">
@@ -69,7 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </nav>
 
-    <!-- ===== Login Card ===== -->
     <main class="login-wrapper">
         <div class="login-card">
 
@@ -114,7 +109,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </main>
 
-    <!-- ===== Footer ===== -->
     <footer class="footer">
         <p>&#169; اكتشف السعودية &mdash; جامعة الملك سعود</p>
     </footer>
