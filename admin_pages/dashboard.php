@@ -54,10 +54,10 @@ $regionCount = count($regions);
     <header>
         <nav>
             <ul>
+                <li> <a href="../index.php">الرئيسية</a></li>
                 <li><a href="dashboard.php">لوحة تحكم المشرف</a></li>
-                <li><a href="addContent.php">إضافة منطقة</a></li>
                 <li><a href="../public_pages/regionsGallary.php">معرض المناطق</a></li>
-                <li><a href="AdminLogin.php">تسجيل خروج</a></li>
+                <li><a href="logout.php">تسجيل خروج</a></li>
             </ul>
         </nav>
     </header>
@@ -75,6 +75,13 @@ $regionCount = count($regions);
           // after adding a new region successfully the dashboard page should be opened with a message
           if (isset($_GET['success']) && $_GET['success'] == 1) {
               echo '<div class="alert-success">✅ &nbsp; تمت الإضافة بنجاح!</div>';
+          }
+        ?>
+
+
+        <?php
+          if (isset($_GET['success']) && $_GET['success'] == 2) {
+              echo '<div class="alert-success">✅ &nbsp; تم التعديل بنجاح!</div>';
           }
         ?>
 

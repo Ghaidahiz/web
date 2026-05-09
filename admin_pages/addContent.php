@@ -17,9 +17,10 @@ error_reporting(E_ALL);
     <header>
         <nav>
             <ul>
+                <li> <a href="../index.php">الرئيسية</a></li>
                 <li><a href="dashboard.php">لوحة تحكم المشرف</a></li>
                 <li><a href="../public_pages/regionsGallary.php">معرض المناطق</a></li>
-                <li><a href="AdminLogin.php">تسجيل خروج</a></li>
+                <li><a href="logout.php">تسجيل خروج</a></li>
             </ul>
         </nav>
     </header>

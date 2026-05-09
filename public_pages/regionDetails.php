@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../database_connection.php");
 
 // 1. التأكد من وجود معرف المنطقة في الرابط لضمان عدم حدوث خطأ
@@ -43,11 +44,16 @@ $images_res = mysqli_query($conn, $images_query);
 
     <header>
         <nav>
-            <ul>
-                <li> <a href="../index.php">الرئيسية</a></li>
-                <li> <a href="regionsGallary.php">معرض المناطق</a></li>
-                <li> <a href="../admin_pages/AdminLogin.php">دخول المشرف</a></li>
-            </ul>
+                <ul>
+                    <li><a href="../index.php">الرئيسية</a></li>
+                    <li><a href="regionsGallary.php">معرض المناطق</a></li>
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                        <li><a href="../admin_pages/dashboard.php">لوحة تحكم المشرف</a></li>
+                        <li><a href="../admin_pages/logout.php">تسجيل خروج</a></li>
+                    <?php else: ?>
+                        <li><a href="../admin_pages/AdminLogin.php">دخول المشرف</a></li>
+                    <?php endif; ?>
+                </ul>
         </nav>
     </header>
 

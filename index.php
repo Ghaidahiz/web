@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("database_connection.php");
 
 // Get region count for stats
@@ -23,7 +24,12 @@ $regionCount = $countResult ? mysqli_fetch_assoc($countResult)['total'] : 0;
             <ul>
                 <li><a href="index.php">الرئيسية</a></li>
                 <li><a href="public_pages/regionsGallary.php">معرض المناطق</a></li>
-                <li><a href="admin_pages/AdminLogin.php">دخول المشرف</a></li>
+                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                    <li><a href="admin_pages/dashboard.php">لوحة تحكم المشرف</a></li>
+                    <li><a href="admin_pages/logout.php">تسجيل خروج</a></li>
+                <?php else: ?>
+                    <li><a href="admin_pages/AdminLogin.php">دخول المشرف</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>

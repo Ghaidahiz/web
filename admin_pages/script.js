@@ -1,43 +1,26 @@
 // script.js  |  Explore KSA – Admin Pages
 
 // ==========================================
-// 1. NIGHT MODE (Persists across all pages)
-// ==========================================
-function initNightMode() {
-    const body = document.body;
-    const nightModeBtn = document.querySelector('.night-mode-btn'); // Make sure your button has this class
-
-    // 1. Check local storage when ANY page loads
-    if (localStorage.getItem('explore_ksa_theme') === 'dark') {
-        body.classList.add('night-mode');
-    }
-
-    // 2. Listen for button clicks (if the button exists on the current page)
-    if (nightModeBtn) {
-        nightModeBtn.addEventListener('click', function () {
-            // Toggle the class on the body
-            body.classList.toggle('night-mode');
-            
-            // Save the new state to localStorage
-            if (body.classList.contains('night-mode')) {
-                localStorage.setItem('explore_ksa_theme', 'dark');
-            } else {
-                localStorage.setItem('explore_ksa_theme', 'light');
-            }
-        });
-    }
-}
-
-// ==========================================
 // 2. ADD INPUT (addContent.php)
 // ==========================================
 function addInput(btn) {
-    const parent = btn.parentNode;
-    const input  = parent.querySelector('input').cloneNode(true);
-    input.value  = ''; // تفريغ القيمة في الحقل الجديد
-    parent.insertBefore(input, btn);
-}
+    const parent = btn.parentNode.parentNode; // the admin-form-group
+    const newRow = document.createElement('div');
+    newRow.className = 'dynamic-input-row';
 
+    const input = btn.parentNode.querySelector('input').cloneNode(true);
+    input.value = '';
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'remove-row-btn';
+    removeBtn.textContent = '−';
+    removeBtn.onclick = function() { newRow.remove(); };
+
+    newRow.appendChild(input);
+    newRow.appendChild(removeBtn);
+    parent.appendChild(newRow);
+}
 // ==========================================
 // 3. LOGIN FORM (AdminLogin.php only)
 // ==========================================

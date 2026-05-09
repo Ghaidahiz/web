@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../database_connection.php");
  ?> 
 <!DOCTYPE html>
@@ -13,9 +14,14 @@ include("../database_connection.php");
         <div>
             <nav>
                 <ul>
-                    <li> <a href="../index.php">الرئيسية</a></li>
-                    <li> <a href="regionsGallary.php" class="active">معرض المناطق</a></li>
-                    <li> <a href="../admin_pages/AdminLogin.php">دخول المشرف</a></li>
+                    <li><a href="../index.php">الرئيسية</a></li>
+                    <li><a href="regionsGallary.php" class="active">معرض المناطق</a></li>
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                        <li><a href="../admin_pages/dashboard.php">لوحة تحكم المشرف</a></li>
+                        <li><a href="../admin_pages/logout.php">تسجيل خروج</a></li>
+                    <?php else: ?>
+                        <li><a href="../admin_pages/AdminLogin.php">دخول المشرف</a></li>
+                    <?php endif; ?>
                 </ul>
             </nav>
         </div>
@@ -76,11 +82,31 @@ include("../database_connection.php");
             } ?>
         </div>
     </main>
+    <!-- Night Mode Button -->
+    <button class="night-mode-btn" onclick="toggleNightMode()" title="الوضع الليلي">🌙</button>
 
-    <footer>  
-        <p>استكشف جمال المملكة &copy; 2026</p>
+    <!-- ===== Footer ===== -->
+    <footer>
+        <p>&#169; اكتشف السعودية &mdash; جامعة الملك سعود &nbsp; 2026</p>
     </footer>
+
+    <script>
+        function toggleNightMode() {
+            document.body.classList.toggle('night-mode');
+            const btn = document.querySelector('.night-mode-btn');
+            btn.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
+            localStorage.setItem('nightMode', document.body.classList.contains('night-mode'));
+        }
+
+        // Restore preference on load
+        if (localStorage.getItem('nightMode') === 'true') {
+            document.body.classList.add('night-mode');
+            document.querySelector('.night-mode-btn').textContent = '☀️';
+        }
+    </script>
+
     <script src="script.js"></script>
+   
 
 </body>
 

@@ -22,8 +22,12 @@ $target_dir  = "../image/";
 $icon_name = null; // null = keep existing
 
 if (!empty($_FILES['icon']['name'])) {
-    $icon_name = basename($_FILES['icon']['name']);
+    $ext = pathinfo($_FILES['icon']['name'], PATHINFO_EXTENSION);
+    $icon_name = uniqid('icon_') . '.' . $ext;
     move_uploaded_file($_FILES['icon']['tmp_name'], $target_dir . $icon_name);
+
+} elseif (isset($_POST['delete_icon']) && $_POST['delete_icon'] == '1') {
+    $icon_name = 'defaultIcon.webp';
 }
 
 if ($icon_name) {
@@ -50,13 +54,13 @@ try {
     if (!$result) throw new Exception(mysqli_error($conn));
 } catch (mysqli_sql_exception $e) {
     if ($e->getCode() == 1062) {
-        header("location: editRegion.php?region_id=$region_id&error=duplicate");
+        header("location: updateContent.php?region_id=$region_id&error=duplicate");
         exit();
     }
-    header("location: editRegion.php?region_id=$region_id&success=0");
+    header("location: updateContent.php?region_id=$region_id&success=0");
     exit();
 } catch (Exception $e) {
-    header("location: editRegion.php?region_id=$region_id&success=0");
+    header("location: updateContent.php?region_id=$region_id&success=0");
     exit();
 }
 
@@ -106,8 +110,9 @@ if (!empty($_POST['delete_images'])) {
 if (!empty($_FILES['images']['name'][0])) {
     foreach ($_FILES['images']['name'] as $key => $name) {
         if (!empty($name)) {
-            $tmp_name  = $_FILES['images']['tmp_name'][$key];
-            $file_name = basename($name);
+            $tmp_name    = $_FILES['images']['tmp_name'][$key];
+            $ext         = pathinfo($name, PATHINFO_EXTENSION);
+            $file_name   = uniqid('img_') . '.' . $ext;
             $target_file = $target_dir . $file_name;
 
             if (move_uploaded_file($tmp_name, $target_file)) {

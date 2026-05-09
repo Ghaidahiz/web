@@ -11,9 +11,10 @@
     <header>
         <nav>
             <ul>
+                <li> <a href="../index.php">الرئيسية</a></li>
                 <li><a href="dashboard.php">لوحة تحكم المشرف</a></li>
                 <li><a href="../public_pages/regionsGallary.php">معرض المناطق</a></li>
-                <li><a href="AdminLogin.php">تسجيل خروج</a></li>
+                <li><a href="logout.php">تسجيل خروج</a></li>
             </ul>
         </nav>
     </header>
@@ -26,7 +27,6 @@
             echo '<div class="alert-error">معرّف المنطقة غير صالح.</div>';
             exit();
         }
-
         $region_id = (int) $_GET['region_id'];
 
         $query = "SELECT * FROM Regions WHERE region_id = $region_id";
@@ -169,15 +169,22 @@
                 <?php if (!empty($region['icon_path'])): ?>
                     <div class="current-image-preview">
                         <img src="../image/<?= htmlspecialchars($region['icon_path']) ?>"
-                             alt="الصورة الرئيسية" style="max-height:120px; border-radius:8px;">
+                            alt="الصورة الرئيسية" style="max-height:120px; border-radius:8px;">
                         <p style="font-size:.85rem; color:#666;">
                             اترك حقل الرفع فارغاً للإبقاء على الصورة الحالية
                         </p>
+                        <label style="font-size:.8rem; color:#c0392b;">
+                            <input type="checkbox" name="delete_icon" value="1">
+                            حذف الصورة الحالية
+                        </label>
                     </div>
                 <?php endif; ?>
                 <label for="icon">استبدال الصورة الرئيسية (اختياري)</label>
-                <input type="file" id="icon" name="icon" accept="image/*">
-            </div>
+                    <div class="dynamic-input-row">
+                        <input type="file" id="icon" name="icon" accept="image/*">
+                        <button type="button" class="remove-row-btn" id="cancel-icon-btn" style="display:none;" onclick="document.getElementById('icon').value=''; this.style.display='none';">−</button>
+                    </div>
+                    </div>
 
             <?php if (!empty($images)): ?>
             <div class="admin-form-group">
@@ -209,6 +216,12 @@
             <button id="addRegionSubmit" type="submit">حفظ التعديلات</button>
 
         </form>
+                <div style="text-align: center; margin-top: 50px;">
+            <a href="dashboard.php" class="gallery-explore-btn" style="display: inline-block; padding: 15px 40px; border-radius: 50px; text-decoration: none;">
+                العودة للوحة التحكم
+            </a>
+        </div>
+
     </main>
 
     <footer>
@@ -219,6 +232,10 @@
         function removeInput(btn) {
             btn.parentElement.remove();
         }
+        document.getElementById('icon').addEventListener('change', function() {
+    const cancelBtn = document.getElementById('cancel-icon-btn');
+    cancelBtn.style.display = this.files.length > 0 ? 'flex' : 'none';
+});
     </script>
 
 </body>
