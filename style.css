@@ -1,4 +1,3 @@
-/*----------General---------*/
 *{
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
 
@@ -51,7 +50,7 @@ footer {
     text-align: center;
     font-weight: bold;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    display: block; /* لضمان أخذ المساحة كاملة */
+    display: block;
 }
 
 .alert-success {
@@ -59,7 +58,7 @@ footer {
     color: #0f602a;
     padding: 15px;
     border-radius: 8px;
-    border-right: 5px solid #30b146; /* خط جانبي أحمر لافت */
+    border-right: 5px solid #30b146;  
     margin-bottom: 20px;
     text-align: center;
     font-weight: bold;
@@ -68,7 +67,6 @@ footer {
 
 
 
-/*---------Region Gallary---------*/
 
 .gallery-page-main {
     padding: 40px 20px;
@@ -79,7 +77,6 @@ footer {
 
 .gallery-grid-container {
     display: grid;
-    /* responsive: بطاقة واحدة للجوال وتلقائي للمتصفح */
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
     gap: 30px;
     direction: rtl;
@@ -114,7 +111,7 @@ footer {
 }
 
 .gallery-grid-container .card_body h2 {
-    color: #08482d; /* اللون الأخضر الخاص بك */
+    color: #08482d;
     margin-bottom: 12px;
     font-size: 1.5rem;
     font-weight: 700;
@@ -164,7 +161,6 @@ footer {
     background: linear-gradient(135deg, #08482d 0%, #1e4e80 100%);
 }
 
-/* تنسيق رسالة "لا توجد بيانات" */
 .gallery-grid-container .no-data {
     grid-column: 1 / -1;
     text-align: center;
@@ -200,7 +196,6 @@ footer {
 }
 
 
-/* -------------- Add content page Styles ------------*/
 
 .admin-form-container {
     max-width: 800px;
@@ -321,7 +316,6 @@ footer {
 }
 
 
-/*----------region details----------*/
 .details-container {
     max-width: 1100px; 
     margin: 50px auto; 
@@ -367,7 +361,7 @@ footer {
     border-radius: 10px;
 }
 
-.grid-list { /* is this live? */
+.grid-list { 
     /* align-content:center;
     display: grid;  */
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
@@ -407,7 +401,6 @@ footer {
     transform: scale(1.03);
 }
 
-/*----------الفوتر (Footer)----------*/
 footer {
     text-align: center;
     padding: 40px;
@@ -416,7 +409,6 @@ footer {
     margin-top: 60px;
 }
 
-/*----------رسالة "لا توجد بيانات"----------*/
 .no-data {
     grid-column: 1 / -1;
     text-align: center;
@@ -445,7 +437,6 @@ footer {
     transform: scale(1.05);
 }
 
-/* ---------- Night Mode Toggle ---------- */
 .night-mode-btn {
     position: fixed;
     bottom: 24px;
@@ -470,7 +461,6 @@ footer {
     background: var(--green-main);
     transform: scale(1.08);
 }
-/* ---------- Night Mode ---------- */
 body.night-mode {
     background: #0f1f17;
     color: #d8f3dc;

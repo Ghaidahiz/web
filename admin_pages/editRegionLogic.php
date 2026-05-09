@@ -19,7 +19,7 @@ $location    = mysqli_real_escape_string($conn, $_POST['location']);
 $description = mysqli_real_escape_string($conn, $_POST['description']);
 $target_dir  = "../image/";
 
-$icon_name = null; // null = keep existing
+$icon_name = null; 
 
 if (!empty($_FILES['icon']['name'])) {
     $ext = pathinfo($_FILES['icon']['name'], PATHINFO_EXTENSION);

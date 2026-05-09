@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Check if the user is logged in, if not then redirect back to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: AdminLogin.php");
     exit;
@@ -9,7 +8,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 include("../database_connection.php");
 
-// ── Handle DELETE ──────────────────────────────────────────────
 $deleteMessage = '';
 if (isset($_GET['delete_id']) && is_numeric($_GET['delete_id'])) {
     $del_id = (int) $_GET['delete_id'];
@@ -28,7 +26,6 @@ if (isset($_GET['delete_id']) && is_numeric($_GET['delete_id'])) {
     }
 }
 
-// ── Fetch all regions ──────────────────────────────────────────
 $regions = [];
 $regionsResult = mysqli_query($conn, "SELECT region_id, region_name, nature, location, headline FROM Regions ORDER BY region_id ASC");
 if ($regionsResult) {
@@ -50,7 +47,6 @@ $regionCount = count($regions);
 
 <body>
 
-    <!-- ===== Header (same as other admin pages) ===== -->
     <header>
         <nav>
             <ul>
@@ -64,7 +60,6 @@ $regionCount = count($regions);
 
     <main class="dashboard-main">
 
-        <!-- ── Alert Messages ── -->
         <?php if ($deleteMessage === 'success'): ?>
             <div class="alert-success">✅ &nbsp; تم حذف السجل بنجاح!</div>
         <?php elseif ($deleteMessage === 'fail'): ?>
@@ -72,7 +67,6 @@ $regionCount = count($regions);
         <?php endif; ?>
 
         <?php
-          // after adding a new region successfully the dashboard page should be opened with a message
           if (isset($_GET['success']) && $_GET['success'] == 1) {
               echo '<div class="alert-success">✅ &nbsp; تمت الإضافة بنجاح!</div>';
           }
@@ -89,7 +83,6 @@ $regionCount = count($regions);
             <div class="alert-success">✅ &nbsp; تم تحديث المنطقة بنجاح!</div>
         <?php endif; ?>
 
-        <!-- ── Dashboard Hero ── -->
         <div class="dashboard-hero">
             <div>
                 <h1>إدارة المحتوى</h1>
@@ -98,7 +91,6 @@ $regionCount = count($regions);
             <a href="addContent.php" class="add-region-btn">＋ &nbsp; إضافة منطقة جديدة</a>
         </div>
 
-        <!-- ── Regions Table ── -->
         <div class="table-card">
             <div class="table-card-header">
                 <h2>جميع المناطق</h2>
@@ -151,7 +143,6 @@ $regionCount = count($regions);
 
     </main>
 
-    <!-- ===== Delete Confirmation Modal ===== -->
     <div class="modal-overlay" id="deleteModal">
         <div class="modal-box">
             <div class="modal-icon">⚠️</div>
@@ -179,17 +170,14 @@ $regionCount = count($regions);
             document.getElementById('deleteModal').classList.remove('active');
         }
 
-        // Close modal when clicking outside the box
         document.getElementById('deleteModal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
 
-        // Close modal on Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeModal();
         });
 
-        // Auto-dismiss alerts after 5 seconds
         setTimeout(function() {
             document.querySelectorAll('.alert-success, .alert-error').forEach(function(el) {
                 el.style.transition = 'opacity 0.6s';

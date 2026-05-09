@@ -82,10 +82,8 @@ include("../database_connection.php");
             } ?>
         </div>
     </main>
-    <!-- Night Mode Button -->
     <button class="night-mode-btn" onclick="toggleNightMode()" title="الوضع الليلي">🌙</button>
 
-    <!-- ===== Footer ===== -->
     <footer>
         <p>&#169; اكتشف السعودية &mdash; جامعة الملك سعود &nbsp; 2026</p>
     </footer>
@@ -98,7 +96,6 @@ include("../database_connection.php");
             localStorage.setItem('nightMode', document.body.classList.contains('night-mode'));
         }
 
-        // Restore preference on load
         if (localStorage.getItem('nightMode') === 'true') {
             document.body.classList.add('night-mode');
             document.querySelector('.night-mode-btn').textContent = '☀️';

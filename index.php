@@ -2,7 +2,6 @@
 session_start();
 include("database_connection.php");
 
-// Get region count for stats
 $countResult = mysqli_query($conn, "SELECT COUNT(*) as total FROM Regions");
 $regionCount = $countResult ? mysqli_fetch_assoc($countResult)['total'] : 0;
 ?>
@@ -18,7 +17,6 @@ $regionCount = $countResult ? mysqli_fetch_assoc($countResult)['total'] : 0;
 
 <body>
 
-    <!-- ===== Header ===== -->
     <header>
         <nav>
             <ul>
@@ -34,7 +32,6 @@ $regionCount = $countResult ? mysqli_fetch_assoc($countResult)['total'] : 0;
         </nav>
     </header>
 
-    <!-- ===== Hero ===== -->
     <section class="hero">
         <div class="hero-content">
             <span class="hero-badge">🌴 &nbsp; اكتشف المملكة العربية السعودية</span>
@@ -47,7 +44,6 @@ $regionCount = $countResult ? mysqli_fetch_assoc($countResult)['total'] : 0;
         </div>
     </section>
 
-    <!-- ===== Stats Strip ===== -->
     <div class="stats-strip">
         <div class="stat-item">
             <div class="stat-number"><?= $regionCount ?>+</div>
@@ -67,7 +63,6 @@ $regionCount = $countResult ? mysqli_fetch_assoc($countResult)['total'] : 0;
         </div>
     </div>
 
-    <!-- ===== Main ===== -->
     <main>
 
         <h2 class="section-title">الهدف</h2>
@@ -97,10 +92,8 @@ $regionCount = $countResult ? mysqli_fetch_assoc($countResult)['total'] : 0;
 
     </main>
 
-    <!-- Night Mode Button -->
     <button class="night-mode-btn" onclick="toggleNightMode()" title="الوضع الليلي">🌙</button>
 
-    <!-- ===== Footer ===== -->
     <footer>
         <p>&#169; اكتشف السعودية &mdash; جامعة الملك سعود &nbsp; 2026</p>
     </footer>
@@ -113,7 +106,6 @@ $regionCount = $countResult ? mysqli_fetch_assoc($countResult)['total'] : 0;
             localStorage.setItem('nightMode', document.body.classList.contains('night-mode'));
         }
 
-        // Restore preference on load
         if (localStorage.getItem('nightMode') === 'true') {
             document.body.classList.add('night-mode');
             document.querySelector('.night-mode-btn').textContent = '☀️';

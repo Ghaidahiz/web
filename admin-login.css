@@ -3,13 +3,9 @@
 
 }
 
-/* =========================================
-   admin-login.css  |  Explore KSA – Admin
-   ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
 
-/* ---------- Variables (Unified with index.css) ---------- */
 :root {
     --green-dark  : #1a4731;
     --green-main  : #2d6a4f;
@@ -25,18 +21,15 @@
     --blue-accent : #2b6cb0;
     --gray-200    : #e2ece6;
     
-    /* Login Specifics */
     --error-bg    : #fff0f0;
     --error-border: #e53e3e;
     --error-text  : #c53030;
     
-    /* Globals */
     --shadow      : 0 10px 40px rgba(0,0,0,0.10);
     --radius      : 12px;
     --transition  : 0.22s ease;
 }
 
-/* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -49,7 +42,6 @@ body {
     color: var(--text-dark);
 }
 
-/* ---------- Navbar ---------- */
 .navbar {
     background: linear-gradient(135deg, var(--green-dark) 0%, var(--blue-accent) 100%);
     height: 60px;
@@ -86,7 +78,6 @@ body {
     color: var(--green-pale);
 }
 
-/* ---------- Main Wrapper ---------- */
 .login-wrapper {
     flex: 1;
     display: flex;
@@ -95,7 +86,6 @@ body {
     padding: 3rem 1rem;
 }
 
-/* ---------- Card ---------- */
 .login-card {
     background: var(--white);
     width: 100%;
@@ -107,7 +97,6 @@ body {
     animation: fadeUp 0.5s ease both;
 }
 
-/* ---------- Card Header ---------- */
 .card-header {
     background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-main) 60%, var(--blue-accent) 100%);
     padding: 1.6rem 2rem;
@@ -115,7 +104,6 @@ body {
     position: relative;
 }
 
-/* Optional pattern matched from index.css */
 .card-header::before {
     content: '';
     position: absolute;
@@ -131,7 +119,6 @@ body {
     position: relative;
 }
 
-/* ---------- Error Box ---------- */
 .error-box {
     background: var(--error-bg);
     border-right: 4px solid var(--error-border);
@@ -150,7 +137,6 @@ body {
     75%      { transform: translateX(6px);  }
 }
 
-/* ---------- Form ---------- */
 form {
     padding: 1.6rem 2rem 2rem;
     display: flex;
@@ -197,7 +183,6 @@ form {
 
 .form-group input::placeholder { color: #aabcb0; }
 
-/* ---------- Password Wrapper ---------- */
 .pass-wrap { position: relative; }
 
 .pass-wrap input { padding-left: 2.8rem; }
@@ -218,7 +203,6 @@ form {
 
 #togglePass:hover { opacity: 1; }
 
-/* ---------- Field Error ---------- */
 .field-error {
     font-size: 0.82rem;
     color: var(--error-text);
@@ -226,7 +210,6 @@ form {
     min-height: 1em;
 }
 
-/* ---------- Submit Button ---------- */
 .submit-btn {
     width: 100%;
     padding: 0.8rem;
@@ -251,7 +234,6 @@ form {
 .submit-btn:active   { transform: translateY(0); }
 .submit-btn:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
 
-/* ---------- Footer ---------- */
 .footer {
     text-align: center;
     padding: 1.3rem;
@@ -260,7 +242,6 @@ form {
     border-top: 1px solid var(--gray-200);
 }
 
-/* ---------- Night Mode (Synced with index.css) ---------- */
 body.night-mode {
     background: #0f1f17;
     color: #d8f3dc;
@@ -308,13 +289,11 @@ body.night-mode .submit-btn {
     background: linear-gradient(135deg, var(--green-main) 0%, var(--green-mid) 100%);
 }
 
-/* ---------- Animations ---------- */
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(14px); }
     to   { opacity: 1; transform: translateY(0);    }
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 480px) {
     .navbar { padding: 0 1rem; }
     .nav-links { gap: 10px; }
