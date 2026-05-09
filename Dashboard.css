@@ -2,12 +2,6 @@
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
 
 }
-/* ===== dashboard.css - KSA Admin Dashboard Theme =====
-
-
-   e.g.  admin_pages/dashboard.php  +  admin_pages/dashboard.css
-
-   ===================================================== */
 
 
 
@@ -89,7 +83,6 @@ body {
 
 
 
-/* ===== Header / Nav (matches existing style) ===== */
 
 header {
 
@@ -145,7 +138,6 @@ nav ul a:hover {
 
 
 
-/* ===== KSA decorative banner under header ===== */
 
 .ksa-banner {
 
@@ -179,7 +171,6 @@ nav ul a:hover {
 
 
 
-/* ===== Main content ===== */
 
 main.dashboard-main {
 
@@ -197,7 +188,6 @@ main.dashboard-main {
 
 
 
-/* ===== Alert messages ===== */
 
 .alert-success {
 
@@ -259,7 +249,6 @@ main.dashboard-main {
 
 
 
-/* ===== Dashboard header card ===== */
 
 .dashboard-hero {
 
@@ -449,7 +438,6 @@ main.dashboard-main {
 
 
 
-/* ===== Table ===== */
 
 .regions-table {
 
@@ -551,7 +539,6 @@ main.dashboard-main {
 
 
 
-/* Nature badge */
 
 .nature-badge {
 
@@ -575,7 +562,6 @@ main.dashboard-main {
 
 
 
-/* Location badge */
 
 .location-badge {
 
@@ -599,7 +585,6 @@ main.dashboard-main {
 
 
 
-/* Description truncate */
 
 .desc-cell {
 
@@ -617,7 +602,6 @@ main.dashboard-main {
 
 
 
-/* ===== Action Buttons ===== */
 
 .actions-cell {
 
@@ -753,7 +737,6 @@ main.dashboard-main {
 
 
 
-/* ===== Delete Confirmation Modal ===== */
 
 .modal-overlay {
 
@@ -947,7 +930,6 @@ main.dashboard-main {
 
 
 
-/* ===== Footer ===== */
 
 footer {
 
@@ -967,7 +949,6 @@ footer {
 
 
 
-/* ===== Responsive ===== */
 
 @media (max-width: 768px) {
 
